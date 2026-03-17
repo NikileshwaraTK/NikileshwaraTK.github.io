@@ -21,7 +21,7 @@
 </head>
 <body class="bg-slate-950 text-white">
 
-  <!-- GATE (unchanged - works perfectly) -->
+  <!-- GATE -->
   <div id="gate" class="gate min-h-screen flex items-center justify-center relative overflow-hidden">
     <div class="data-flow" id="particles"></div>
     <div class="max-w-lg w-full bg-slate-900/90 backdrop-blur-xl p-10 rounded-3xl border border-cyan-400 shadow-2xl z-10">
@@ -55,9 +55,8 @@
     </div>
   </div>
 
-  <!-- PORTFOLIO -->
+  <!-- PORTFOLIO (with your animated GIF) -->
   <div id="portfolio" class="hidden">
-    <!-- Navbar -->
     <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur-md z-50 border-b border-slate-800">
       <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
         <h2 class="text-2xl font-bold text-cyan-400">Nikileshwara T K</h2>
@@ -73,89 +72,84 @@
       </div>
     </nav>
 
-    <!-- HERO - FIXED & UPGRADED -->
-    <section class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+    <section class="min-h-screen flex items-center justify-center pt-20">
       <div class="max-w-5xl mx-auto px-6 text-center">
-        <!-- YOUR ANIMATED GIF - BIG & GLOWING -->
-        <img src="profile.gif" alt="Nikileshwara T K - Senior Data Engineer" 
-             class="hero-gif w-64 h-64 mx-auto rounded-3xl shadow-2xl border-8 border-cyan-400 mb-10 ring-8 ring-cyan-400/50">
-
+        <img src="profile.gif" alt="Nikileshwara T K" class="hero-gif w-64 h-64 mx-auto rounded-3xl shadow-2xl border-8 border-cyan-400 mb-10 ring-8 ring-cyan-400/50">
         <h1 class="text-6xl font-bold mb-4">Nikileshwara T K</h1>
         <p class="text-4xl text-cyan-400 font-semibold mb-8">Senior Data Engineer | Databricks • PySpark • TB-scale ETL</p>
-        
-        <p class="max-w-2xl mx-auto text-slate-300 text-xl leading-relaxed">
-          Building production-grade data platforms for healthcare. Passionate about clean pipelines, 
-          zero-defect quality frameworks, and turning raw data into real business impact.
-        </p>
+        <p class="max-w-2xl mx-auto text-slate-300 text-xl">Building production-grade data platforms for healthcare. Passionate about clean pipelines, zero-defect quality frameworks, and turning raw data into real business impact.</p>
       </div>
     </section>
 
-    <!-- Rest of your sections (About, Experience, Projects, Skills, Certs, Contact) remain exactly the same as before -->
-    <!-- (they were already perfect - no changes needed) -->
+    <!-- All other sections (About, Experience, Projects, Skills, Certs, Contact) remain exactly as before -->
   </div>
 
 <script>
-// === EMAILJS (already correct) ===
-emailjs.init("7UsfmbtfRGk6-xf2j");
-const SERVICE_ID = "service_rlp1dqo";
-const TEMPLATE_ID = "template_wy416lu";
+  // === EMAILJS CREDENTIALS ===
+  emailjs.init("7UsfmbtfRGk6-xf2j");
+  const SERVICE_ID = "service_rlp1dqo";
+  const TEMPLATE_ID = "template_wy416lu";
 
-// Particles + Confetti + Form (unchanged - works)
-function createParticles() {
-  const container = document.getElementById('particles');
-  for (let i = 0; i < 60; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.style.left = Math.random() * 100 + 'vw';
-    p.style.animationDuration = (Math.random() * 6 + 6) + 's';
-    p.style.animationDelay = Math.random() * 5 + 's';
-    container.appendChild(p);
+  function createParticles() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 60; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = (Math.random() * 6 + 6) + 's';
+      p.style.animationDelay = Math.random() * 5 + 's';
+      container.appendChild(p);
+    }
   }
-}
 
-function launchConfetti() { confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } }); }
+  function launchConfetti() {
+    confetti({ particleCount: 200, spread: 80, origin: { y: 0.6 } });
+  }
 
-document.getElementById('visitorForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  btn.innerHTML = 'INGESTING DATA...';
-  btn.disabled = true;
+  document.getElementById('visitorForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.innerHTML = 'INGESTING DATA...';
+    btn.disabled = true;
 
-  const templateParams = {
-    name: document.getElementById('name').value,
-    designation: document.getElementById('designation').value || 'Not provided',
-    company: document.getElementById('company').value || 'Not provided',
-    visitor_email: document.getElementById('visitor_email').value,
-    phone: document.getElementById('phone').value || 'Not provided',
-    purpose: document.getElementById('purpose').value,
-    message: document.getElementById('message').value || 'No additional message'
-  };
+    const templateParams = {
+      name: document.getElementById('name').value,
+      designation: document.getElementById('designation').value || 'Not provided',
+      company: document.getElementById('company').value || 'Not provided',
+      visitor_email: document.getElementById('visitor_email').value,
+      phone: document.getElementById('phone').value || 'Not provided',
+      purpose: document.getElementById('purpose').value,
+      message: document.getElementById('message').value || 'No message',
+      timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })   // ← Indian time added
+    };
 
-  emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams).then(() => {
-    launchConfetti();
-    document.getElementById('gate').style.opacity = '0';
-    setTimeout(() => {
-      document.getElementById('gate').classList.add('hidden');
-      document.getElementById('portfolio').classList.remove('hidden');
-      AOS.init({ once: true });
-    }, 800);
-  }).catch(() => alert('⚠️ Something went wrong. Please try again!'));
-});
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+      .then(() => {
+        launchConfetti();
+        document.getElementById('gate').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('gate').classList.add('hidden');
+          document.getElementById('portfolio').classList.remove('hidden');
+          AOS.init({ once: true });
+        }, 800);
+      })
+      .catch(() => alert('⚠️ Something went wrong. Please try again!'));
+  });
 
-function skipGate() {
-  localStorage.setItem('skipGate', 'true');
-  document.getElementById('gate').classList.add('hidden');
-  document.getElementById('portfolio').classList.remove('hidden');
-  AOS.init();
-}
-
-window.onload = () => {
-  if (localStorage.getItem('skipGate') === 'true') {
+  function skipGate() {
+    localStorage.setItem('skipGate', 'true');
     document.getElementById('gate').classList.add('hidden');
     document.getElementById('portfolio').classList.remove('hidden');
+    AOS.init();
   }
-  createParticles();
-};
+
+  window.onload = () => {
+    if (localStorage.getItem('skipGate') === 'true') {
+      document.getElementById('gate').classList.add('hidden');
+      document.getElementById('portfolio').classList.remove('hidden');
+    }
+    createParticles();
+  };
 </script>
 </body>
 </html>
