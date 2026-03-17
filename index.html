@@ -6,220 +6,508 @@
     <title>Nikileshwara T K | Senior Data Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
         
-        :root { --primary: 14 165 233; }
-        body { font-family: 'Inter', system_ui, sans-serif; }
-        .title-font { font-family: 'Space Grotesk', sans-serif; }
+        :root {
+            --primary: 37 99 235;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
 
-        /* SOOTHING ANIMATIONS */
-        .hero { background: linear-gradient(135deg, #0f172a, #1e40af, #0ea5e9); }
-        .data-orb { position: absolute; width: 18px; height: 18px; background: rgba(224, 242, 255, 0.6); border-radius: 50%; box-shadow: 0 0 25px #67e8f9; animation: floatOrb 25s linear infinite; }
-        @keyframes floatOrb { 0% { transform: translate(0,0) rotate(0deg); } 100% { transform: translate(800px, -150px) rotate(360deg); } }
+        /* HERO ANIMATIONS */
+        .hero {
+            background: linear-gradient(135deg, #1e40af, #3b82f6, #0ea5e9);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .data-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: dataflow 8s linear infinite;
+        }
+        
+        .data-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #60a5fa;
+            animation: dataflow-dot 4s linear infinite;
+        }
+        
+        @keyframes dataflow {
+            0% { transform: translateX(-150%); }
+            100% { transform: translateX(150%); }
+        }
+        
+        @keyframes dataflow-dot {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(1200px); }
+        }
 
-        .pipeline-step { transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .flow-particle { animation: flow 3.5s linear infinite; }
-        @keyframes flow { 0% { transform: translateX(-100%); } 100% { transform: translateX(600%); } }
+        /* PROFILE IMAGE */
+        .profile-img {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 0 60px rgba(59, 130, 246, 0.6);
+        }
 
-        .fade-in { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        /* TIMELINE */
+        .timeline-item {
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 23px;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+            opacity: 0.3;
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 4px solid #3b82f6;
+            box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.2);
+        }
 
-        .modal { animation: modalPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        @keyframes modalPop { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        /* SKILL BADGES */
+        .skill-badge {
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .skill-badge:hover {
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 10px 25px -5px rgb(59 130 246 / 0.4);
+        }
+
+        /* CARD HOVER */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        /* SCROLL REVEAL */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200">
-
-<!-- PLAYFUL ENTRY MODAL -->
-<div id="entryModal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden">
-    <div class="modal bg-white text-slate-800 rounded-3xl p-10 max-w-md w-full mx-4 shadow-2xl">
-        <div class="text-center">
-            <div class="text-6xl mb-6">🌌</div>
-            <h2 class="title-font text-4xl font-semibold mb-3">Hey there! 👋</h2>
-            <p class="text-xl text-slate-600 mb-8">Welcome to my data universe.<br>Quick intro before we explore TB-scale pipelines?</p>
+<body class="bg-slate-50 text-slate-800">
+    <!-- HERO -->
+    <header class="hero h-screen flex items-center relative text-white">
+        <!-- Animated data lines -->
+        <div class="data-line w-96 top-[25%] left-[-20%]"></div>
+        <div class="data-line w-96 top-[45%] left-[-30%] animation-delay-2000"></div>
+        <div class="data-line w-96 top-[65%] left-[-15%] animation-delay-4000"></div>
+        
+        <!-- Data dots -->
+        <div class="data-dot top-[30%] left-[-10%]"></div>
+        <div class="data-dot top-[55%] left-[-25%] animation-delay-1500"></div>
+        <div class="data-dot top-[70%] left-[-5%] animation-delay-3000"></div>
+        
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl mb-6">
+                <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span class="text-sm font-medium tracking-widest">OPEN TO OPPORTUNITIES</span>
+            </div>
             
-            <input id="visitorName" type="text" placeholder="Your name" 
-                   class="w-full px-6 py-4 rounded-2xl border border-slate-300 focus:border-sky-500 outline-none mb-4">
+            <h1 class="title-font text-7xl md:text-8xl font-semibold tracking-tighter mb-4">
+                NIKILESHWARA T K
+            </h1>
+            <p class="text-3xl md:text-4xl font-light tracking-wide mb-8">
+                Senior Data Engineer
+            </p>
+            <p class="max-w-2xl mx-auto text-xl opacity-90 mb-12">
+                Azure • AWS • Databricks • Spark • PySpark • Airflow<br>
+                Building TB-scale healthcare data platforms with pixel-perfect quality
+            </p>
             
-            <select id="visitorPurpose" class="w-full px-6 py-4 rounded-2xl border border-slate-300 focus:border-sky-500 outline-none mb-6">
-                <option value="">Why are you here?</option>
-                <option value="Looking to hire a Senior Data Engineer">🔥 Looking to hire a Senior Data Engineer</option>
-                <option value="Recruiter checking profiles">👔 Recruiter checking profiles</option>
-                <option value="Fellow data professional / networking">🤝 Fellow data professional / networking</option>
-                <option value="Potential client or collaborator">💼 Potential client or collaborator</option>
-                <option value="Casual browsing / inspiration">📖 Casual browsing / inspiration</option>
-                <option value="Other">Other</option>
-            </select>
-            
-            <div class="flex gap-4">
-                <button onclick="skipModal()" 
-                        class="flex-1 py-4 border-2 border-slate-300 rounded-2xl font-medium hover:bg-slate-100">Skip for now</button>
-                <button onclick="submitVisitor()" 
-                        class="flex-1 py-4 bg-gradient-to-r from-sky-500 to-teal-500 text-white rounded-2xl font-semibold">Continue →</button>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#experience" 
+                   class="px-10 py-4 bg-white text-blue-700 font-semibold rounded-2xl flex items-center gap-3 hover:bg-amber-300 transition-all group">
+                    <span>View My Journey</span>
+                    <i class="fa-solid fa-arrow-down group-hover:-translate-y-0.5 transition"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/nikileshwaraa-t-k-050312295" target="_blank"
+                   class="px-10 py-4 border-2 border-white/80 hover:bg-white/10 font-semibold rounded-2xl flex items-center gap-3 transition-all">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span>Connect on LinkedIn</span>
+                </a>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- REST OF YOUR PORTFOLIO (enhanced) -->
-<header class="hero h-screen flex items-center relative overflow-hidden">
-    <!-- Soft floating orbs -->
-    <div class="data-orb top-[15%] left-[10%] animation-delay-0"></div>
-    <div class="data-orb top-[35%] left-[25%] animation-delay-4000" style="animation-delay: 4s;"></div>
-    <div class="data-orb top-[55%] left-[5%] animation-delay-7000" style="animation-delay: 7s;"></div>
-    
-    <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-        <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl mb-6">
-            <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-            <span class="text-sm font-medium tracking-widest">OPEN TO OPPORTUNITIES</span>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center gap-2 text-xs tracking-widest">
+            <span>SCROLL FOR MAGIC</span>
+            <div class="w-px h-12 bg-white/50 animate-bounce"></div>
         </div>
-        
-        <h1 id="personalGreeting" class="title-font text-7xl md:text-8xl font-semibold tracking-tighter mb-4">
-            NIKILESHWARA T K
-        </h1>
-        <p class="text-3xl md:text-4xl font-light tracking-wide mb-8">Senior Data Engineer</p>
-        <p class="max-w-2xl mx-auto text-xl opacity-90 mb-12">
-            Azure • AWS • Databricks • Spark • PySpark • Airflow<br>
-            Building TB-scale healthcare data platforms with enterprise-grade quality
-        </p>
-        
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="#experience" class="px-10 py-4 bg-white text-blue-700 font-semibold rounded-2xl flex items-center gap-3 hover:bg-amber-300 transition-all">View My Journey <i class="fa-solid fa-arrow-down"></i></a>
-            <a href="https://www.linkedin.com/in/nikileshwaraa-t-k-050312295" target="_blank" class="px-10 py-4 border-2 border-white/80 hover:bg-white/10 font-semibold rounded-2xl flex items-center gap-3">Connect on LinkedIn</a>
+    </header>
+
+    <!-- PROFILE PHOTO -->
+    <div class="max-w-5xl mx-auto -mt-24 relative z-20 px-6">
+        <div class="flex justify-center">
+            <img src="nikil.jfif" alt="Nikileshwara T K" 
+                 class="profile-img w-56 h-56 md:w-64 md:h-64 object-cover rounded-3xl border-8 border-white shadow-2xl">
         </div>
     </div>
-</header>
 
-<!-- PROFILE PHOTO -->
-<div class="max-w-5xl mx-auto -mt-20 relative z-20 px-6">
-    <div class="flex justify-center">
-        <img src="nikil.jfif" alt="Nikileshwara T K" class="profile-img w-56 h-56 md:w-64 md:h-64 object-cover rounded-3xl border-8 border-white shadow-2xl">
-    </div>
-</div>
-
-<div class="max-w-5xl mx-auto px-6 pt-16 pb-24">
-    <!-- ABOUT -->
-    <section id="about" class="mb-24 fade-in">
-        <!-- (your original About content exactly as you wrote) -->
-        <div class="bg-white rounded-3xl p-10 shadow-xl">
-            <div class="prose max-w-none text-lg leading-relaxed text-slate-700">
-                <p class="mb-6">Experienced Senior Data Engineer with <strong>5+ years</strong> building enterprise-grade data platforms. Currently at Emids Technologies (Humana – Data Modernization)...</p>
-                <!-- rest of your original text -->
+    <div class="max-w-5xl mx-auto px-6 pt-16 pb-24">
+        
+        <!-- ABOUT / OBJECTIVE -->
+        <section id="about" class="mb-24 fade-in">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+                <h2 class="text-4xl font-semibold title-font tracking-tight">About Me</h2>
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
             </div>
-        </div>
-    </section>
+            
+            <div class="bg-white rounded-3xl p-10 shadow-xl card-hover">
+                <div class="prose max-w-none text-lg leading-relaxed text-slate-700">
+                    <p class="mb-6">
+                        Experienced Senior Data Engineer with <strong>5+ years</strong> building enterprise-grade data platforms. 
+                        Currently at Emids Technologies (Humana – Data Modernization), I design and deliver TB-scale ETL pipelines in Azure Databricks using Spark &amp; PySpark while maintaining strict PHI compliance.
+                    </p>
+                    <p>
+                        Passionate about turning raw data into trusted, high-quality assets. I specialize in healthcare risk adjustment models (CMS HCC V28), reverse-engineering legacy SSIS packages, and building dynamic Data Quality frameworks using Great Expectations + Databricks Labs DQX.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-    <!-- NEW SPARK DEMO - ATTRACTIVE & EASY -->
-    <section id="spark-demo" class="mb-24 fade-in">
-        <div class="flex items-center gap-4 mb-10">
-            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-sky-400 to-transparent"></div>
-            <h2 class="text-4xl font-semibold title-font tracking-tight">Live Spark Demo</h2>
-            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-sky-400 to-transparent"></div>
-        </div>
-        
-        <div class="bg-white rounded-3xl p-10 shadow-2xl">
-            <div class="grid md:grid-cols-2 gap-10">
-                <!-- Visual Pipeline -->
-                <div>
-                    <h3 class="font-semibold mb-6 text-xl">CMS HCC V28 ETL Pipeline (Healthcare)</h3>
-                    <div class="relative h-80 bg-slate-100 rounded-2xl overflow-hidden flex items-center justify-center">
-                        <!-- Pipeline boxes -->
-                        <div class="flex items-center gap-4 relative w-full px-8">
-                            <div class="pipeline-step bg-white p-4 rounded-2xl shadow text-center w-40">📥 S3 Raw Claims</div>
-                            <div class="text-4xl text-sky-400">→</div>
-                            <div class="pipeline-step bg-white p-4 rounded-2xl shadow text-center w-40">🔥 PySpark Transform</div>
-                            <div class="text-4xl text-sky-400">→</div>
-                            <div class="pipeline-step bg-white p-4 rounded-2xl shadow text-center w-40">✅ Great Expectations DQ</div>
-                            <div class="text-4xl text-sky-400">→</div>
-                            <div class="pipeline-step bg-white p-4 rounded-2xl shadow text-center w-40">📤 Delta Lake</div>
+        <!-- EXPERIENCE TIMELINE -->
+        <section id="experience" class="mb-24 fade-in">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+                <h2 class="text-4xl font-semibold title-font tracking-tight">Experience</h2>
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+            </div>
+
+            <div class="space-y-16 relative">
+                
+                <!-- Emids -->
+                <div class="timeline-item pl-12">
+                    <div class="flex items-start gap-6">
+                        <div class="timeline-dot flex-shrink-0 mt-1 rounded-full"></div>
+                        <div class="flex-1">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                                <div>
+                                    <h3 class="text-2xl font-semibold">Senior Consultant – Data Modernization</h3>
+                                    <p class="text-blue-600 font-medium">EMIDS TECHNOLOGIES PVT LTD • Humana (Client)</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-blue-100 text-blue-700 text-sm px-5 py-1.5 rounded-3xl font-medium">Jul 2024 – Present</span>
+                                </div>
+                            </div>
+                            
+                            <ul class="mt-6 space-y-4 text-slate-600">
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Designed &amp; built TB-scale ETL pipelines in Databricks (Spark/PySpark) processing structured, semi-structured &amp; unstructured healthcare data with PHI compliance</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Created modular Data Quality framework using Great Expectations + Databricks Labs DQX + Delta-driven rules engine (nulls, regex, ranges, uniqueness, row counts)</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Implemented environment-aware CI/CD deployments (dev/stg/qa/prod) with Git + parameterized configs</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Orchestrated workflows with AWS Airflow, S3, Glue, Lambda &amp; CloudWatch</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Reverse-engineered CMS HCC V28 risk models &amp; legacy SSIS packages into reusable PySpark modules</li>
+                            </ul>
                         </div>
-                        
-                        <!-- Flow particles -->
-                        <div class="flow-particle absolute top-[42%] left-0 w-4 h-1 bg-gradient-to-r from-transparent via-sky-400 to-transparent"></div>
                     </div>
-                    <button onclick="runSparkSimulation()" 
-                            class="mt-6 w-full py-4 bg-gradient-to-r from-teal-500 to-sky-500 text-white rounded-2xl font-semibold text-lg">▶ Run Simulation (2s)</button>
+                </div>
+
+                <!-- Euclid -->
+                <div class="timeline-item pl-12">
+                    <div class="flex items-start gap-6">
+                        <div class="timeline-dot flex-shrink-0 mt-1 rounded-full"></div>
+                        <div class="flex-1">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                                <div>
+                                    <h3 class="text-2xl font-semibold">Senior Software Engineer</h3>
+                                    <p class="text-blue-600 font-medium">EUCLID INNOVATIONS PVT LTD • Société Générale (Client)</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-blue-100 text-blue-700 text-sm px-5 py-1.5 rounded-3xl font-medium">Oct 2023 – Jun 2024</span>
+                                </div>
+                            </div>
+                            
+                            <ul class="mt-6 space-y-4 text-slate-600">
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> 30-node Hadoop cluster (HDFS, Hive, Sqoop) for large-scale ETL &amp; analytics</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Built Spark ETL pipelines from Azure Blob → Databricks → ADLS</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Developed optimized queries, procedures &amp; first-level defect analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cognizant -->
+                <div class="timeline-item pl-12">
+                    <div class="flex items-start gap-6">
+                        <div class="timeline-dot flex-shrink-0 mt-1 rounded-full"></div>
+                        <div class="flex-1">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                                <div>
+                                    <h3 class="text-2xl font-semibold">Software Engineer</h3>
+                                    <p class="text-blue-600 font-medium">COGNIZANT TECHNOLOGY SOLUTIONS • Dunkin’ Donuts (Client)</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-blue-100 text-blue-700 text-sm px-5 py-1.5 rounded-3xl font-medium">Nov 2021 – Mar 2023</span>
+                                </div>
+                            </div>
+                            
+                            <ul class="mt-6 space-y-4 text-slate-600">
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Spark DataFrame API + Spark-SQL for complex transformations &amp; temporary tables</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Built reusable PySpark business logic in Azure Databricks notebooks</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Automated notebook scheduling for continuous customer data processing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acert -->
+                <div class="timeline-item pl-12">
+                    <div class="flex items-start gap-6">
+                        <div class="timeline-dot flex-shrink-0 mt-1 rounded-full"></div>
+                        <div class="flex-1">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                                <div>
+                                    <h3 class="text-2xl font-semibold">Software Engineer</h3>
+                                    <p class="text-blue-600 font-medium">ACERT IT SOLUTIONS • Medtronic (Client)</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-blue-100 text-blue-700 text-sm px-5 py-1.5 rounded-3xl font-medium">Jan 2020 – Oct 2021</span>
+                                </div>
+                            </div>
+                            
+                            <ul class="mt-6 space-y-4 text-slate-600">
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Integrated AWS (S3, Glue, Lambda, CloudWatch) with Databricks pipelines</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> End-to-end orchestration using Apache Airflow DAGs</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> CI/CD pipelines with Git + Jenkins for healthcare data projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="mb-24 fade-in">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+                <h2 class="text-4xl font-semibold title-font tracking-tight">Tech Stack</h2>
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="skill-badge bg-white rounded-3xl px-6 py-5 shadow flex items-center gap-4">
+                    <i class="fa-brands fa-microsoft text-3xl text-blue-600"></i>
+                    <div>
+                        <div class="font-semibold">Azure Databricks</div>
+                        <div class="text-xs text-slate-500">Data Factory • ADLS • Blob</div>
+                    </div>
+                </div>
+                <div class="skill-badge bg-white rounded-3xl px-6 py-5 shadow flex items-center gap-4">
+                    <i class="fa-brands fa-aws text-3xl text-orange-500"></i>
+                    <div>
+                        <div class="font-semibold">AWS</div>
+                        <div class="text-xs text-slate-500">S3 • Glue • Lambda • CloudWatch</div>
+                    </div>
+                </div>
+                <div class="skill-badge bg-white rounded-3xl px-6 py-5 shadow flex items-center gap-4">
+                    <i class="fa-solid fa-fire text-3xl text-red-500"></i>
+                    <div>
+                        <div class="font-semibold">Spark • PySpark</div>
+                        <div class="text-xs text-slate-500">SQL • Streaming • Core</div>
+                    </div>
+                </div>
+                <div class="skill-badge bg-white rounded-3xl px-6 py-5 shadow flex items-center gap-4">
+                    <i class="fa-solid fa-database text-3xl text-emerald-600"></i>
+                    <div>
+                        <div class="font-semibold">Hadoop • Hive • Sqoop</div>
+                        <div class="text-xs text-slate-500">Big Data Ecosystem</div>
+                    </div>
+                </div>
+                <div class="skill-badge bg-white rounded-3xl px-6 py-5 shadow flex items-center gap-4">
+                    <i class="fa-solid fa-diagram-project text-3xl text-purple-600"></i>
+                    <div>
+                        <div class="font-semibold">Apache Airflow</div>
+                        <div class="text-xs text-slate-500">Orchestration &amp; DAGs</div>
+                    </div>
+                </div>
+                <div class="skill-badge bg-white rounded-3xl px-6 py-5 shadow flex items-center gap-4">
+                    <i class="fa-solid fa-shield-halved text-3xl text-cyan-600"></i>
+                    <div>
+                        <div class="font-semibold">Data Quality</div>
+                        <div class="text-xs text-slate-500">Great Expectations • DQX</div>
+                    </div>
+                </div>
+                <div class="skill-badge bg-white rounded-3xl px-6 py-5 shadow flex items-center gap-4">
+                    <i class="fa-solid fa-git-alt text-3xl text-slate-700"></i>
+                    <div>
+                        <div class="font-semibold">CI/CD • Git • Jenkins</div>
+                    </div>
+                </div>
+                <div class="skill-badge bg-white rounded-3xl px-6 py-5 shadow flex items-center gap-4">
+                    <div class="font-semibold text-lg">CMS HCC V28</div>
+                    <div class="text-xs text-slate-500">Healthcare Risk Models</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section class="mb-24 fade-in">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+                <h2 class="text-4xl font-semibold title-font tracking-tight">Certifications</h2>
+                <div class="h-px flex-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <a href="https://learn.microsoft.com/api/credentials/share/en-us/NikileshwaraTK-3810/14E3872DF019FB4F&amp;sharingId" target="_blank" 
+                   class="card-hover bg-white rounded-3xl p-8 flex gap-6 items-start group">
+                    <div class="text-5xl">🏆</div>
+                    <div>
+                        <div class="font-semibold text-lg group-hover:text-blue-600">Microsoft Certified: Azure Data Engineer Associate (DP-203)</div>
+                        <div class="text-slate-500 text-sm mt-1">Official Microsoft Credential</div>
+                    </div>
+                </a>
+                
+                <a href="https://www.credly.com/badges/9c54484e-5f96-4d29-b649-4e685e93c376/public_url" target="_blank"
+                   class="card-hover bg-white rounded-3xl p-8 flex gap-6 items-start group">
+                    <div class="text-5xl">🏆</div>
+                    <div>
+                        <div class="font-semibold text-lg group-hover:text-blue-600">AWS Certified Data Engineer – Associate</div>
+                        <div class="text-slate-500 text-sm mt-1">AWS Credly Badge</div>
+                    </div>
+                </a>
+                
+                <a href="http://ude.my/UC-d7623911-5a17-4b4a-9ddb-3d9b32e5aead" target="_blank"
+                   class="card-hover bg-white rounded-3xl p-8 flex gap-6 items-start group">
+                    <div class="text-5xl">📘</div>
+                    <div>
+                        <div class="font-semibold text-lg group-hover:text-blue-600">Microsoft Fabric – The Complete Guide</div>
+                    </div>
+                </a>
+                
+                <a href="http://ude.my/UC-f231a698-9386-48ec-a096-44422863e49e" target="_blank"
+                   class="card-hover bg-white rounded-3xl p-8 flex gap-6 items-start group">
+                    <div class="text-5xl">📘</div>
+                    <div>
+                        <div class="font-semibold text-lg group-hover:text-blue-600">Intro to AI: A Beginner’s Guide to Artificial Intelligence</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CONTACT -->
+        <div class="grid md:grid-cols-2 gap-10">
+            <!-- Education -->
+            <div class="bg-white rounded-3xl p-10 shadow-xl card-hover fade-in">
+                <h2 class="text-3xl font-semibold mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-graduation-cap"></i> Education
+                </h2>
+                <div>
+                    <div class="font-semibold text-xl">B. Tech – Computer Science</div>
+                    <div class="text-slate-600">Visvesvaraya Technological University (VTU)</div>
+                    <div class="text-sm text-slate-500 mt-1">Graduated 2018</div>
+                </div>
+            </div>
+            
+            <!-- Contact -->
+            <div class="bg-gradient-to-br from-blue-700 to-blue-900 text-white rounded-3xl p-10 shadow-2xl card-hover fade-in">
+                <h2 class="text-3xl font-semibold mb-8">Let's Connect</h2>
+                
+                <div class="space-y-6">
+                    <a href="tel:+917899556939" class="flex items-center gap-4 hover:text-amber-300 transition">
+                        <i class="fa-solid fa-phone text-2xl"></i>
+                        <div>
+                            <div class="font-medium">+91 78995 56939</div>
+                        </div>
+                    </a>
+                    
+                    <a href="mailto:tknikileshwara@gmail.com" class="flex items-center gap-4 hover:text-amber-300 transition">
+                        <i class="fa-solid fa-envelope text-2xl"></i>
+                        <div>
+                            <div class="font-medium">tknikileshwara@gmail.com</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/nikileshwaraa-t-k-050312295" target="_blank" 
+                       class="flex items-center gap-4 hover:text-amber-300 transition">
+                        <i class="fa-brands fa-linkedin text-2xl"></i>
+                        <div>
+                            <div class="font-medium">LinkedIn Profile</div>
+                        </div>
+                    </a>
                 </div>
                 
-                <!-- Code & Results -->
-                <div>
-                    <pre class="bg-slate-900 text-emerald-300 p-6 rounded-2xl text-sm overflow-auto h-80"><code>df = spark.read.format("delta").load("s3://.../claims")
-df_clean = df.withColumn("hcc_score", when(col("diagnosis")=="E11.9", 0.8).otherwise(0.3))
-dq = GreatExpectations(df_clean).expect_column_values_to_be_between("hcc_score", 0, 1)
-dq.write.format("delta").save("adls://.../gold")</code></pre>
-                    
-                    <div id="demoResult" class="hidden mt-4 bg-emerald-50 border border-emerald-200 p-6 rounded-2xl">
-                        <p class="font-medium text-emerald-700">✅ Simulation Complete!</p>
-                        <p class="text-sm mt-3">Processed 2.4 TB • 99.7% data quality • 18s latency</p>
-                        <table class="mt-4 w-full text-xs">
-                            <tr><td class="py-1">Rows processed</td><td class="text-right font-mono">1,248,392</td></tr>
-                            <tr><td class="py-1">HCC V28 score accuracy</td><td class="text-right font-mono">99.4%</td></tr>
-                        </table>
-                    </div>
+                <div class="mt-12 pt-8 border-t border-white/30 text-xs opacity-75 tracking-widest">
+                    AVAILABLE FOR FREELANCE / FULL-TIME ROLES IN DATA ENGINEERING
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Your original Experience, Skills, Certifications, Education, Contact sections (exactly as in the document you shared) -->
-    <!-- ... (I kept every bullet, timeline, skill badge, cert link, phone, email, LinkedIn exactly the same) ... -->
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center text-sm">
+        <div class="max-w-5xl mx-auto px-6">
+            <p>© 2026 Nikileshwara T K • Built with ❤️ for data pipelines</p>
+            <p class="mt-2 text-xs">Hosted on GitHub Pages • Last updated March 2026</p>
+        </div>
+    </footer>
 
-</div>
-
-<footer class="bg-slate-900 text-slate-400 py-12 text-center text-sm">
-    <p>© 2026 Nikileshwara T K • Built with ❤️ for data pipelines</p>
-    <p class="mt-2 text-xs">Visited by <span class="font-mono text-emerald-400">1,247</span> data enthusiasts this month</p>
-</footer>
-
-<script>
-    // EmailJS setup - replace these three lines
-    emailjs.init("YOUR_PUBLIC_KEY");  // ← from EmailJS dashboard
-    
-    function submitVisitor() {
-        const name = document.getElementById("visitorName").value.trim() || "Anonymous Visitor";
-        const purpose = document.getElementById("visitorPurpose").value || "Casual visit";
-        
-        // Send email notification
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-            to_email: "tknikileshwara@gmail.com",
-            visitor_name: name,
-            purpose: purpose,
-            timestamp: new Date().toLocaleString("en-IN")
-        }).then(() => console.log("✅ Visitor email sent to you!"));
-        
-        // Personalize greeting
-        document.getElementById("personalGreeting").innerHTML = `HEY ${name.toUpperCase()}! 👋<br>NIKILESHWARA T K`;
-        
-        document.getElementById("entryModal").classList.add("hidden");
-        localStorage.setItem("portfolioVisited", "true");
-    }
-    
-    function skipModal() {
-        document.getElementById("entryModal").classList.add("hidden");
-    }
-    
-    function runSparkSimulation() {
-        const btn = event.currentTarget;
-        btn.innerHTML = "🔄 Running...";
-        setTimeout(() => {
-            document.getElementById("demoResult").classList.remove("hidden");
-            btn.innerHTML = "✅ Done! Try again?";
-        }, 2200);
-    }
-    
-    // Show modal only first time (or every time you want)
-    window.addEventListener("load", () => {
-        if (!localStorage.getItem("portfolioVisited")) {
-            document.getElementById("entryModal").classList.remove("hidden");
+    <script>
+        // Tailwind script already loaded
+        function initTailwind() {
+            // No extra config needed
         }
-        // Scroll reveal
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => e.target.classList.toggle("visible", e.isIntersecting));
+        
+        // Simple scroll reveal
+        function handleScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', () => {
+            initTailwind();
+            handleScroll();
+            
+            // Extra animation delay for data dots
+            const dots = document.querySelectorAll('.data-dot');
+            dots.forEach((dot, i) => {
+                dot.style.animationDelay = `${i * 1200}ms`;
+            });
         });
-        document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
-    });
-</script>
+    </script>
 </body>
 </html>
