@@ -1,128 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nikileshwara T K | Senior Data Engineer</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: Modern & clean -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
-  
-  <style>
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-    }
-    .title-font {
-      font-family: 'Space Grotesk', sans-serif;
-    }
-    /* Subtle data-flow animation */
-    .data-flow {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .flow-line {
-      position: absolute;
-      height: 1px;
-      width: 150%;
-      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.4), transparent);
-      animation: flow 12s linear infinite;
-    }
-    @keyframes flow {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-    .delay-1 { animation-delay: 2s; }
-    .delay-2 { animation-delay: 5s; }
-    .delay-3 { animation-delay: 8s; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikileshwara | Data Engineer</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+
+        .nav-btn {
+            transition: 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            background: #2563eb;
+            color: white;
+        }
+
+        .active {
+            background: #2563eb;
+            color: white;
+        }
+
+        #loader {
+            display: none;
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white min-h-screen">
 
-  <!-- Hero / Intro Section -->
-  <header class="relative min-h-screen flex items-center justify-center px-6 py-16 overflow-hidden">
-    
-    <!-- Subtle animated data lines (professional & calming) -->
-    <div class="data-flow">
-      <div class="flow-line top-[20%] left-0 delay-1"></div>
-      <div class="flow-line top-[50%] left-0 delay-2"></div>
-      <div class="flow-line top-[80%] left-0 delay-3"></div>
-    </div>
+<body>
 
-    <div class="relative z-10 max-w-5xl mx-auto text-center">
-      
-      <!-- Availability badge -->
-      <div class="inline-flex items-center gap-3 bg-emerald-500/20 backdrop-blur-sm text-emerald-300 px-6 py-2 rounded-full mb-8 text-sm font-medium tracking-wide">
-        <span class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></span>
-        OPEN TO NEW OPPORTUNITIES – 2026
-      </div>
+<!-- NAVBAR -->
+<div class="fixed top-5 left-1/2 -translate-x-1/2 bg-white shadow-lg rounded-xl px-4 py-2 flex gap-3 z-50">
 
-      <!-- Name & Title -->
-      <h1 class="title-font text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight mb-4">
-        NIKILESHWARA T K
-      </h1>
-      
-      <p class="text-3xl md:text-4xl font-medium text-blue-300 mb-6">
-        Senior Data Engineer
-      </p>
+    <button onclick="navigate('home')" class="nav-btn px-4 py-2 rounded-lg">Home</button>
+    <button onclick="navigate('experience')" class="nav-btn px-4 py-2 rounded-lg">Experience</button>
+    <button onclick="navigate('projects')" class="nav-btn px-4 py-2 rounded-lg">Projects</button>
+    <button onclick="navigate('education')" class="nav-btn px-4 py-2 rounded-lg">Education</button>
+    <button onclick="navigate('certifications')" class="nav-btn px-4 py-2 rounded-lg">Certifications</button>
 
-      <!-- Strong value proposition tagline -->
-      <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-10 text-slate-300 leading-relaxed">
-        5+ years building <span class="text-blue-400 font-semibold">TB-scale ETL pipelines</span> in Azure Databricks & AWS • 
-        Healthcare domain expert (CMS HCC V28, PHI compliance) • 
-        Spark • PySpark • Airflow • Great Expectations • Dual Certified (Azure DP-203 & AWS Data Engineer Associate)
-      </p>
+</div>
 
-      <!-- Quick highlights (scannable bullets for recruiters) -->
-      <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-12 text-base md:text-lg">
-        <div class="bg-slate-800/60 backdrop-blur-sm px-6 py-3 rounded-xl border border-slate-700/50">
-          Azure Databricks • Data Factory • ADLS
-        </div>
-        <div class="bg-slate-800/60 backdrop-blur-sm px-6 py-3 rounded-xl border border-slate-700/50">
-          AWS S3 • Glue • Lambda • Airflow
-        </div>
-        <div class="bg-slate-800/60 backdrop-blur-sm px-6 py-3 rounded-xl border border-slate-700/50">
-          Healthcare Risk Adjustment • Data Quality Frameworks
-        </div>
-      </div>
+<!-- LOADER -->
+<div id="loader" class="fixed inset-0 flex items-center justify-center bg-white z-40">
+    <div class="text-blue-600 text-xl font-semibold">Loading...</div>
+</div>
 
-      <!-- Call-to-action buttons -->
-      <div class="flex flex-col sm:flex-row justify-center gap-5">
-        <a href="#experience" 
-           class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-10 py-5 rounded-2xl transition-all shadow-lg shadow-blue-500/20">
-          View Full Experience <i class="fa-solid fa-arrow-down ml-2"></i>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/nikileshwaraa-t-k-050312295" target="_blank" 
-           class="inline-flex items-center gap-3 border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 font-semibold px-10 py-5 rounded-2xl transition-all">
-          <i class="fa-brands fa-linkedin text-xl"></i> Connect on LinkedIn
-        </a>
-      </div>
+<!-- MAIN CONTENT -->
+<div id="app"></div>
 
-      <!-- Contact strip at bottom of hero -->
-      <div class="mt-16 text-slate-400 text-sm md:text-base flex flex-wrap justify-center gap-x-8 gap-y-3">
-        <div class="flex items-center gap-2">
-          <i class="fa-solid fa-phone text-blue-400"></i>
-          <span>+91 78995 56939</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <i class="fa-solid fa-envelope text-blue-400"></i>
-          <span>tknikileshwara@gmail.com</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <i class="fa-brands fa-linkedin text-blue-400"></i>
-          <span>linkedin.com/in/nikileshwaraa-t-k-050312295</span>
-        </div>
-      </div>
-    </div>
-  </header>
+<!-- SCRIPT -->
+<script>
+const routes = {
+    home: "home.html",   // we will create this
+    experience: "experience.html",
+    projects: "projects.html",
+    education: "education.html",
+    certifications: "certifications.html"
+};
 
-  <!-- Font Awesome for icons -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" defer></script>
+async function loadPage(page) {
+    try {
+        document.getElementById("loader").style.display = "flex";
+
+        const response = await fetch(routes[page]);
+        const html = await response.text();
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+
+        document.getElementById("app").innerHTML = doc.body.innerHTML;
+
+        window.scrollTo(0, 0);
+
+        document.getElementById("loader").style.display = "none";
+
+        setActive(page);
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+function navigate(page) {
+    history.pushState({ page }, "", "#" + page);
+    loadPage(page);
+}
+
+window.onpopstate = function (event) {
+    const page = event.state?.page || "home";
+    loadPage(page);
+};
+
+function setActive(page) {
+    document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
+
+    const map = {
+        home: 0,
+        experience: 1,
+        projects: 2,
+        education: 3,
+        certifications: 4
+    };
+
+    document.querySelectorAll(".nav-btn")[map[page]].classList.add("active");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const page = location.hash.replace("#", "") || "home";
+    loadPage(page);
+});
+</script>
 
 </body>
 </html>
