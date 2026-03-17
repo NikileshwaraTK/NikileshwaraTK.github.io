@@ -9,15 +9,33 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
         body { font-family: 'Inter', system_ui, sans-serif; }
         .title-font { font-family: 'Space Grotesk', sans-serif; }
-        .fade-in { opacity: 0; transform: translateY(40px); transition: all 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        
+        .fade-in { 
+            opacity: 0; 
+            transform: translateY(40px); 
+            transition: all 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+        }
+        .fade-in.visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
+        /* Modal */
+        .modal { 
+            animation: modalPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); 
+        }
+        @keyframes modalPop { 
+            from { transform: scale(0.6); opacity: 0; } 
+            to { transform: scale(1); opacity: 1; } 
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200">
 
-<!-- PLAYFUL VISITOR MODAL (centralized here) -->
+<!-- PLAYFUL VISITOR MODAL -->
 <div id="entryModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50">
     <div class="modal bg-white text-slate-800 rounded-3xl p-10 max-w-md w-full mx-4 shadow-2xl">
         <div class="text-center">
@@ -25,9 +43,10 @@
             <h2 class="title-font text-4xl font-semibold mb-3">Hey there! 👋</h2>
             <p class="text-xl text-slate-600 mb-8">Welcome to my data universe.<br>Quick intro before exploring my 5-year journey?</p>
             
-            <input id="visitorName" type="text" placeholder="Your name" class="w-full px-6 py-4 rounded-2xl border border-slate-300 focus:border-sky-500 mb-4">
+            <input id="visitorName" type="text" placeholder="Your name" 
+                   class="w-full px-6 py-4 rounded-2xl border border-slate-300 focus:border-sky-500 outline-none mb-4">
             
-            <select id="visitorPurpose" class="w-full px-6 py-4 rounded-2xl border border-slate-300 focus:border-sky-500 mb-6">
+            <select id="visitorPurpose" class="w-full px-6 py-4 rounded-2xl border border-slate-300 focus:border-sky-500 outline-none mb-6">
                 <option value="">Why are you visiting?</option>
                 <option value="Looking to hire a Senior Data Engineer">🔥 Looking to hire a Senior Data Engineer</option>
                 <option value="Recruiter checking profiles">👔 Recruiter checking profiles</option>
@@ -38,28 +57,31 @@
             </select>
             
             <div class="flex gap-4">
-                <button onclick="skipModal()" class="flex-1 py-4 border-2 border-slate-300 rounded-2xl font-medium hover:bg-slate-100">Skip</button>
-                <button onclick="submitVisitor()" class="flex-1 py-4 bg-gradient-to-r from-sky-500 to-teal-500 text-white rounded-2xl font-semibold">Continue →</button>
+                <button onclick="skipModal()" 
+                        class="flex-1 py-4 border-2 border-slate-300 rounded-2xl font-medium hover:bg-slate-100">Skip</button>
+                <button onclick="submitVisitor()" 
+                        class="flex-1 py-4 bg-gradient-to-r from-sky-500 to-teal-500 text-white rounded-2xl font-semibold">Continue →</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- HERO LOADED HERE -->
+<!-- HERO SECTION -->
 <div id="hero-placeholder" class="fade-in"></div>
 
-<!-- ABOUT + EDUCATION + SKILLS LOADED HERE -->
+<!-- ABOUT + EDUCATION + SKILLS SECTION -->
 <div id="about-placeholder" class="fade-in"></div>
 
-<!-- EXPERIENCE LOADED HERE -->
+<!-- EXPERIENCE SECTION -->
 <div id="experience-placeholder" class="fade-in"></div>
 
-<!-- RESUME DOWNLOAD + FOOTER -->
-<footer class="bg-slate-900 py-12 text-center text-slate-400 text-sm">
+<!-- FOOTER -->
+<footer class="bg-slate-900 py-12 text-center text-slate-400 text-sm border-t border-slate-700">
     <div class="max-w-5xl mx-auto px-6">
         <a href="Nikileshwara_DataEngg.pdf" target="_blank"
-           class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-2xl mb-8">
-            <i class="fa-solid fa-download"></i> Download Full Resume (PDF)
+           class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-2xl mb-8 shadow-lg">
+            <i class="fa-solid fa-download"></i> 
+            Download Full Resume (PDF)
         </a>
         <p>© 2026 Nikileshwara T K • Senior Data Engineer • Built with ❤️ for clean data pipelines</p>
         <p class="mt-2 text-xs">Hosted on GitHub Pages • Last updated March 2026</p>
@@ -67,20 +89,26 @@
 </footer>
 
 <script>
-    // === EMAILJS SETUP (replace these 3 lines once) ===
-    emailjs.init("YOUR_PUBLIC_KEY");   // ← Get from https://www.emailjs.com
+    // ==================== EMAILJS SETUP (REPLACE THESE 3 LINES) ====================
+    // Go to https://www.emailjs.com → sign in → get these values
+    emailjs.init("YOUR_PUBLIC_KEY");   // ← Your Public Key from EmailJS dashboard
 
     function submitVisitor() {
-        const name = document.getElementById("visitorName").value.trim() || "Anonymous";
+        const name = document.getElementById("visitorName").value.trim() || "Anonymous Visitor";
         const purpose = document.getElementById("visitorPurpose").value || "Casual visit";
         
         emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
             visitor_name: name,
             purpose: purpose,
             timestamp: new Date().toLocaleString("en-IN")
-        }).then(() => console.log("✅ Visitor alert sent to your email!"));
+        }).then(() => {
+            console.log("✅ Visitor notification sent to your email!");
+        });
         
-        document.getElementById("personalGreeting").innerHTML = `HEY ${name.toUpperCase()}! 👋<br>NIKILESHWARA T K`;
+        // Personalize hero greeting
+        const greetingEl = document.getElementById("personalGreeting");
+        if (greetingEl) greetingEl.innerHTML = `HEY ${name.toUpperCase()}! 👋<br>NIKILESHWARA T K`;
+        
         document.getElementById("entryModal").classList.add("hidden");
         localStorage.setItem("portfolioVisited", "true");
     }
@@ -89,36 +117,38 @@
         document.getElementById("entryModal").classList.add("hidden");
     }
 
-    // === ORCHESTRATOR: Load all child sections ===
+    // ==================== ORCHESTRATOR: LOAD ALL CHILD FILES ====================
     async function loadPortfolio() {
-        // Hero
-        fetch('hero-section.html').then(r => r.text()).then(html => {
-            document.getElementById("hero-placeholder").innerHTML = html;
-        });
+        // 1. Hero
+        fetch('hero-section.html')
+            .then(r => r.text())
+            .then(html => document.getElementById("hero-placeholder").innerHTML = html);
 
-        // About + Education + Skills
-        fetch('about-education-skills.html').then(r => r.text()).then(html => {
-            document.getElementById("about-placeholder").innerHTML = html;
-        });
+        // 2. About + Education + Skills
+        fetch('about-education-skills.html')
+            .then(r => r.text())
+            .then(html => document.getElementById("about-placeholder").innerHTML = html);
 
-        // Experience
-        fetch('experience-section.html').then(r => r.text()).then(html => {
-            document.getElementById("experience-placeholder").innerHTML = html;
-        });
+        // 3. Experience
+        fetch('experience-section.html')
+            .then(r => r.text())
+            .then(html => document.getElementById("experience-placeholder").innerHTML = html);
     }
 
-    // Run everything on page load
+    // ==================== PAGE LOAD ====================
     window.addEventListener("load", () => {
         loadPortfolio();
         
-        // Show modal only first time
+        // Show modal only on first visit
         if (!localStorage.getItem("portfolioVisited")) {
             document.getElementById("entryModal").classList.remove("hidden");
         }
         
-        // Smooth scroll reveal for all sections
+        // Smooth scroll reveal
         const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => e.target.classList.toggle("visible", e.isIntersecting));
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("visible");
+            });
         });
         document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
     });
