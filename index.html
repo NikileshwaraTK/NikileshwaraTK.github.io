@@ -12,15 +12,38 @@
             color: #e2e8f0;
         }
 
+        .hero {
+            background: url('emids.jfif') center/cover no-repeat;
+            height: 220px;
+            position: relative;
+        }
+
+        .overlay {
+            background: rgba(15, 23, 42, 0.85);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid #0f172a;
+            margin-top: -70px;
+            object-fit: cover;
+        }
+
         header {
             text-align: center;
-            padding: 50px;
-            background: #1e293b;
+            padding: 20px;
         }
 
         header h1 {
-            margin: 0;
-            font-size: 40px;
+            margin: 10px 0 5px;
+            font-size: 32px;
         }
 
         header p {
@@ -28,7 +51,7 @@
         }
 
         .container {
-            padding: 30px;
+            padding: 20px;
             max-width: 1000px;
             margin: auto;
         }
@@ -37,7 +60,12 @@
             background: #1e293b;
             padding: 20px;
             margin-bottom: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         h2 {
@@ -52,6 +80,11 @@
         a {
             color: #38bdf8;
             text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
 
         .btn {
@@ -62,14 +95,25 @@
             border-radius: 5px;
             margin-top: 10px;
         }
+
+        .contact a {
+            display: inline-block;
+            margin-top: 8px;
+        }
     </style>
 </head>
 
 <body>
 
+<div class="hero">
+    <div class="overlay">
+        <h1>Nikileshwara T K</h1>
+        <p>Senior Data Engineer | Azure | AWS | Spark</p>
+    </div>
+</div>
+
 <header>
-    <h1>Nikileshwara T K</h1>
-    <p>Senior Data Engineer | Azure | AWS | Spark</p>
+    <img src="nikil.jfif" class="profile-img">
 </header>
 
 <div class="container">
@@ -77,8 +121,7 @@
     <div class="card">
         <h2>About Me</h2>
         <p>
-            Experienced Data Engineer with 5+ years of expertise in building scalable ETL pipelines,
-            working with Azure Databricks, AWS, and Big Data technologies.
+            Data Engineer with 5+ years experience building scalable pipelines using Databricks, Spark, and cloud platforms.
         </p>
     </div>
 
@@ -87,50 +130,40 @@
         <ul>
             <li>Azure Databricks, ADLS, Data Factory</li>
             <li>Python, PySpark, Spark SQL</li>
-            <li>AWS (S3, Glue, Lambda, CloudWatch)</li>
+            <li>AWS S3, Glue, Lambda</li>
             <li>Airflow, CI/CD, Git</li>
-            <li>Hadoop, Hive, Sqoop</li>
+            <li>Hadoop, Hive</li>
         </ul>
     </div>
 
     <div class="card">
         <h2>Experience</h2>
         <p><b>Senior Consultant - Emids</b></p>
-        <p>Built scalable healthcare data pipelines and data quality frameworks.</p>
+        <p>Built healthcare data pipelines and DQ frameworks.</p>
 
-        <p><b>Senior Software Engineer - Euclid Innovations</b></p>
-        <p>Worked on Hadoop clusters and Azure data integration.</p>
+        <p><b>Senior Software Engineer - Euclid</b></p>
+        <p>Worked on Hadoop and Azure data systems.</p>
 
         <p><b>Software Engineer - Cognizant</b></p>
-        <p>Developed Spark-based ETL pipelines and automation workflows.</p>
-    </div>
-
-    <div class="card">
-        <h2>Certifications</h2>
-        <ul>
-            <li>Azure Data Engineer Associate (DP-203)</li>
-            <li>AWS Certified Data Engineer – Associate</li>
-        </ul>
+        <p>Developed Spark ETL workflows.</p>
     </div>
 
     <div class="card">
         <h2>Projects</h2>
         <ul>
-            <li>Healthcare Data Pipeline using Databricks & PySpark</li>
-            <li>Data Quality Framework using Great Expectations</li>
-            <li>ETL Migration from SSIS to Azure Databricks</li>
+            <li>Healthcare pipeline using Databricks</li>
+            <li>Data quality framework using Great Expectations</li>
+            <li>SSIS to Databricks migration</li>
         </ul>
     </div>
 
-    <div class="card">
+    <div class="card contact">
         <h2>Contact</h2>
         <p>Email: tknikileshwara@gmail.com</p>
-        <p>
-            LinkedIn:
-            <a href="https://www.linkedin.com/in/nikileshwaraa-t-k-050312295" target="_blank">
-                View Profile
-            </a>
-        </p>
+
+        <a href="https://www.linkedin.com/in/nikileshwaraa-t-k-050312295" target="_blank">
+            Open LinkedIn Profile
+        </a>
     </div>
 
 </div>
