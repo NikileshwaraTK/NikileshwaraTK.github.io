@@ -6,82 +6,129 @@
 
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
             margin: 0;
-            background: #f8fafc;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f1f5f9;
             color: #1e293b;
+            overflow-x: hidden;
         }
 
+        /* HERO WITH ANIMATION */
         .hero {
-            background: linear-gradient(120deg, #0ea5e9, #2563eb);
+            height: 300px;
+            background: linear-gradient(120deg, #2563eb, #0ea5e9);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
             color: white;
-            text-align: center;
-            padding: 60px 20px 80px;
+            overflow: hidden;
+        }
+
+        /* Animated lines */
+        .line {
+            position: absolute;
+            width: 200%;
+            height: 2px;
+            background: rgba(255,255,255,0.2);
+            animation: move 6s linear infinite;
+        }
+
+        .line:nth-child(1) { top: 40%; }
+        .line:nth-child(2) { top: 60%; animation-delay: 2s; }
+
+        @keyframes move {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0%); }
+        }
+
+        /* moving dots */
+        .dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: flow 5s linear infinite;
+        }
+
+        .dot:nth-child(3) { top: 40%; }
+        .dot:nth-child(4) { top: 60%; animation-delay: 2s; }
+
+        @keyframes flow {
+            from { left: -10%; }
+            to { left: 110%; }
         }
 
         .hero h1 {
             margin: 0;
             font-size: 36px;
+            z-index: 2;
         }
 
         .hero p {
             margin-top: 10px;
-            font-size: 18px;
-            opacity: 0.9;
+            z-index: 2;
         }
 
+        /* PROFILE IMAGE */
         .profile-img {
-            width: 140px;
-            height: 140px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 5px solid white;
+            border: 6px solid white;
             object-fit: cover;
             display: block;
-            margin: -70px auto 20px auto;
-            background: #e2e8f0;
+            margin: -75px auto 20px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
+        /* CONTAINER */
         .container {
             max-width: 1000px;
             margin: auto;
             padding: 20px;
         }
 
+        /* CARDS */
         .card {
             background: white;
             padding: 20px;
             margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(37,99,235,0.2);
         }
 
         h2 {
             border-bottom: 2px solid #e2e8f0;
             padding-bottom: 6px;
-            margin-bottom: 12px;
         }
 
         ul {
             line-height: 1.8;
         }
 
+        /* BUTTON */
         .contact a {
             display: inline-block;
-            padding: 10px 18px;
+            padding: 12px 20px;
             background: #2563eb;
             color: white;
             border-radius: 6px;
-            margin-top: 10px;
             text-decoration: none;
             font-weight: 600;
+            transition: 0.3s;
         }
 
         .contact a:hover {
             background: #1d4ed8;
-        }
-
-        .email {
-            color: #475569;
         }
     </style>
 </head>
@@ -89,12 +136,17 @@
 <body>
 
 <div class="hero">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+
     <h1>Nikileshwara T K</h1>
     <p>Senior Data Engineer | Azure | AWS | Spark</p>
 </div>
 
-<!-- IMPORTANT: Update path if needed -->
-<img src="nikil.jfif" class="profile-img" alt="Profile">
+<!-- Embedded image: no GitHub issue -->
+<img src="data:image/jpeg;base64,REPLACE_WITH_BASE64" class="profile-img">
 
 <div class="container">
 
@@ -119,29 +171,20 @@
     <div class="card">
         <h2>Experience</h2>
         <p><b>Senior Consultant - Emids</b></p>
-        <p>Built healthcare data pipelines and data quality frameworks.</p>
+        <p>Built healthcare data pipelines and DQ frameworks.</p>
 
-        <p><b>Senior Software Engineer - Euclid Innovations</b></p>
-        <p>Worked on Hadoop clusters and Azure integration.</p>
+        <p><b>Senior Software Engineer - Euclid</b></p>
+        <p>Worked on Hadoop and Azure.</p>
 
         <p><b>Software Engineer - Cognizant</b></p>
-        <p>Developed Spark ETL workflows and automation.</p>
-    </div>
-
-    <div class="card">
-        <h2>Projects</h2>
-        <ul>
-            <li>Healthcare data pipeline using Databricks and PySpark</li>
-            <li>Data quality framework using Great Expectations</li>
-            <li>ETL migration from SSIS to Azure Databricks</li>
-        </ul>
+        <p>Developed Spark ETL pipelines.</p>
     </div>
 
     <div class="card contact">
         <h2>Contact</h2>
-        <p class="email">Email: tknikileshwara@gmail.com</p>
+        <p>Email: tknikileshwara@gmail.com</p>
 
-        <a href="https://www.linkedin.com/in/nikileshwara-t-k-050312295/"" target="_blank">
+        <a href="https://www.linkedin.com/in/nikileshwara-t-k-050312295/" target="_blank">
             LinkedIn Profile
         </a>
     </div>
