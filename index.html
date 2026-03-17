@@ -3,251 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikileshwara T K • Data Engineer</title>
+    <title>Nikileshwara T K • Senior Data Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
         
-        :root {
-            --neon-cyan: #22d3ee;
-            --neon-purple: #a855f7;
-        }
-        
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-        }
-        
-        .title-font {
-            font-family: 'Space Grotesk', sans-serif;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .title-font { font-family: 'Space Grotesk', sans-serif; }
         
         .hero-bg {
-            background: radial-gradient(circle at 50% 30%, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
-        }
-        
-        .neon-text {
-            text-shadow: 0 0 20px #22d3ee, 0 0 40px #22d3ee;
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
         }
         
         .glass {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(34, 211, 238, 0.3);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
         }
         
-        .timeline-line {
-            background: linear-gradient(to bottom, #22d3ee, #a855f7);
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
         }
         
-        .card-glow {
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #67e8f9;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after,
+        .nav-link.active:after { width: 100%; }
+        
+        .card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .card-glow:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 0 40px -10px #22d3ee, 0 25px 50px -12px rgb(0 0 0);
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
         }
         
-        .particle {
-            position: absolute;
-            background: #22d3ee;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: float 25s linear infinite;
-            opacity: 0.6;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(1); }
-            100% { transform: translateY(-100vh) scale(0.3); }
-        }
-        
-        .section-header {
-            position: relative;
-        }
-        
-        .section-header:after {
-            content: '';
-            position: absolute;
-            height: 4px;
-            width: 80px;
-            background: linear-gradient(to right, #22d3ee, #a855f7);
-            bottom: -10px;
-            left: 0;
-            border-radius: 9999px;
+        .timeline-dot {
+            box-shadow: 0 0 0 8px rgba(103, 232, 249, 0.3);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200 overflow-x-hidden">
+<body class="bg-slate-950 text-slate-200">
     <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-cyan-500/20">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+    <nav class="fixed top-0 w-full z-50 glass border-b border-slate-700">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-9 h-9 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-2xl flex items-center justify-center text-white font-bold text-3xl shadow-[0_0_25px_#22d3ee]">N</div>
-                <span class="title-font text-3xl font-bold tracking-tighter neon-text">NIKILESHWARA</span>
+                <div class="w-10 h-10 bg-cyan-500 rounded-2xl flex items-center justify-center text-slate-950 font-bold text-3xl">NT</div>
+                <span class="title-font text-3xl font-semibold tracking-tighter">NIKILESHWARA</span>
             </div>
             
-            <div class="hidden md:flex items-center gap-9 text-sm font-medium">
-                <a href="#home" class="nav-link hover:text-cyan-400 transition-colors">HOME</a>
-                <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">ABOUT</a>
-                <a href="#experience" class="nav-link hover:text-cyan-400 transition-colors">EXPERIENCE</a>
-                <a href="#skills" class="nav-link hover:text-cyan-400 transition-colors">SKILLS</a>
-                <a href="#certifications" class="nav-link hover:text-cyan-400 transition-colors">CERTS</a>
-                <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors">CONNECT</a>
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
             
-            <a href="resume.pdf" download 
-               class="flex items-center gap-3 px-7 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-3xl font-semibold text-sm hover:scale-110 transition-all shadow-[0_0_20px_#22d3ee]">
+            <a href="resume.pdf" download class="flex items-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-8 py-3 rounded-2xl transition-all">
                 <i class="fa-solid fa-download"></i>
-                DOWNLOAD RESUME
+                RESUME
             </a>
         </div>
     </nav>
 
-    <!-- HERO with PARTICLES -->
-    <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
-        <!-- Canvas Particles -->
-        <canvas id="particles" class="absolute inset-0 pointer-events-none z-0"></canvas>
-        
-        <div class="max-w-6xl mx-auto px-6 relative z-10 pt-20">
-            <div class="grid md:grid-cols-12 gap-12 items-center">
-                <div class="md:col-span-7">
-                    <div class="inline-flex items-center gap-3 px-6 py-3 rounded-3xl bg-slate-900/80 border border-cyan-400/30 text-cyan-400 text-sm mb-8">
-                        <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                        OPEN TO NEW ADVENTURES IN DATA
-                    </div>
-                    
-                    <h1 id="typing" class="title-font text-7xl md:text-8xl font-bold leading-none tracking-tighter mb-4 neon-text">
-                        NIKILESHWARA T K
-                    </h1>
-                    <h2 class="text-5xl font-semibold text-cyan-300 mb-8">SENIOR DATA ENGINEER</h2>
-                    
-                    <p class="max-w-lg text-xl text-slate-400 leading-relaxed">
-                        Building TB-scale healthcare data platforms with Databricks, Spark &amp; AWS. 
-                        Turning messy data into magic since 2020.
-                    </p>
-                    
-                    <div class="flex flex-wrap gap-5 mt-12">
-                        <a href="#contact" 
-                           class="px-10 py-5 bg-white text-slate-950 rounded-3xl font-bold flex items-center gap-3 hover:bg-cyan-300 transition-all text-lg">
-                            <i class="fa-solid fa-paper-plane"></i>
-                            LET'S BUILD
-                        </a>
-                        <a href="https://www.linkedin.com/in/nikileshwaraa-t-k-050312295" target="_blank"
-                           class="px-10 py-5 border-2 border-cyan-400 hover:border-purple-400 rounded-3xl font-bold flex items-center gap-3 transition-all text-lg">
-                            <i class="fa-brands fa-linkedin"></i>
-                            LINKEDIN
-                        </a>
-                    </div>
-                    
-                    <div class="mt-20 flex gap-12 text-sm">
-                        <div>
-                            <div class="text-cyan-400 text-xs tracking-[3px]">PHONE</div>
-                            <a href="tel:+917899556939" class="font-mono text-xl hover:text-cyan-300">+91 78995 56939</a>
-                        </div>
-                        <div>
-                            <div class="text-cyan-400 text-xs tracking-[3px]">EMAIL</div>
-                            <a href="mailto:tknikileshwara@gmail.com" class="font-mono text-xl hover:text-cyan-300">tknikileshwara@gmail.com</a>
-                        </div>
-                    </div>
+    <!-- HERO -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-800 border border-cyan-500/30 text-cyan-400 text-sm">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    OPEN TO OPPORTUNITIES
                 </div>
                 
-                <div class="md:col-span-5 relative">
-                    <div class="glass rounded-3xl p-4 shadow-[0_0_80px_-20px_#22d3ee]">
-                        <img src="https://via.placeholder.com/600x700/0f172a/22d3ee?text=Your+Photo+Here" 
-                             alt="Nikileshwara T K" class="rounded-3xl">
-                    </div>
+                <h1 class="title-font text-7xl md:text-8xl font-bold tracking-tighter leading-none">
+                    NIKILESHWARA T K
+                </h1>
+                <p class="text-4xl text-cyan-300 font-medium">Senior Data Engineer</p>
+                
+                <p class="max-w-lg text-lg text-slate-400">
+                    5+ years building TB-scale healthcare data platforms. 
+                    Spark • PySpark • Databricks • AWS • Data Quality Frameworks • CMS HCC V28
+                </p>
+                
+                <div class="flex gap-4">
+                    <a href="#contact" class="px-10 py-5 bg-white text-slate-950 rounded-2xl font-semibold flex items-center gap-3 hover:bg-cyan-300 transition-all">
+                        <i class="fa-solid fa-paper-plane"></i> LET'S CONNECT
+                    </a>
+                    <a href="https://www.linkedin.com/in/nikileshwaraa-t-k-050312295" target="_blank" 
+                       class="px-10 py-5 border-2 border-cyan-400 rounded-2xl font-semibold flex items-center gap-3 hover:bg-cyan-500/10 transition-all">
+                        <i class="fa-brands fa-linkedin"></i> LINKEDIN
+                    </a>
                 </div>
             </div>
-        </div>
-        
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-cyan-400/70 animate-bounce">
-            <i class="fa-solid fa-chevron-down text-3xl"></i>
+            
+            <div>
+                <div class="glass rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://via.placeholder.com/620x780/1e2937/67e8f9?text=Upload+Your+Photo+Here" 
+                         alt="Nikileshwara T K" class="w-full">
+                    <!-- ↑ Replace this URL with your photo uploaded to the repo (e.g. assets/photo.jpg) -->
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="py-28 bg-slate-900">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="grid md:grid-cols-12 gap-16">
+    <section id="about" class="py-24 bg-slate-900">
+        <div class="max-w-5xl mx-auto px-8">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
                 <div class="md:col-span-5">
-                    <h2 class="section-header title-font text-6xl font-bold tracking-tight">About Me</h2>
+                    <h2 class="title-font text-6xl font-bold tracking-tight">About Me</h2>
                 </div>
-                <div class="md:col-span-7 text-lg leading-relaxed text-slate-300">
-                    <p class="mb-8">
-                        I’m obsessed with turning raw, chaotic data into clean, actionable intelligence. 
-                        Whether it’s modernizing healthcare platforms at TB scale or reverse-engineering complex risk models, 
-                        I love building systems that just work.
-                    </p>
-                    <p>
-                        Passionate about data pipelines, quality frameworks, and making sure PHI stays safe while everything runs at lightning speed.
-                    </p>
+                <div class="md:col-span-7 text-lg text-slate-300 leading-relaxed space-y-6">
+                    <p>I’m passionate about collecting, processing, and storing data. Designing, testing, and maintaining data management systems so organizations can evaluate and optimize performance.</p>
+                    <p>Deep expertise in healthcare data modernization (CMS HCC V28 risk adjustment) and building production-grade, PHI-compliant pipelines at terabyte scale.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EXPERIENCE - GLOWING TIMELINE -->
-    <section id="experience" class="py-28 bg-slate-950">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="section-header title-font text-6xl font-bold tracking-tight mb-16">Experience</h2>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-24 bg-slate-950">
+        <div class="max-w-5xl mx-auto px-8">
+            <h2 class="title-font text-6xl font-bold tracking-tight mb-16">Experience</h2>
             
-            <div class="relative pl-10 border-l-2 border-cyan-500/30 space-y-24">
-                <!-- Job 1 -->
-                <div class="relative">
-                    <div class="absolute -left-[11px] w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 shadow-[0_0_20px_#22d3ee]"></div>
-                    <div class="flex justify-between mb-4">
-                        <div>
-                            <div class="text-cyan-400 font-mono">Jul 2024 – Present</div>
-                            <h3 class="text-3xl font-semibold">Senior Consultant @ EMIDS Technologies</h3>
-                            <div class="text-purple-400">Client: Humana • Data Modernization</div>
+            <div class="space-y-20">
+                <!-- Emids -->
+                <div class="grid md:grid-cols-12 gap-12">
+                    <div class="md:col-span-4">
+                        <div class="sticky top-8">
+                            <span class="text-cyan-400 font-mono">Jul 2024 – Present</span>
+                            <h3 class="text-3xl font-semibold mt-3">Senior Consultant</h3>
+                            <p class="text-slate-400">EMIDS Technologies • Client: Humana (Data Modernization)</p>
                         </div>
                     </div>
-                    <ul class="space-y-4 text-slate-400 text-lg">
-                        <li class="flex gap-3"><span class="text-cyan-400 mt-1">→</span> TB-scale Spark + PySpark ETL pipelines with full PHI compliance</li>
-                        <li class="flex gap-3"><span class="text-cyan-400 mt-1">→</span> Built modular Data Quality framework (Great Expectations + Databricks DQX + Delta rules engine)</li>
-                        <li class="flex gap-3"><span class="text-cyan-400 mt-1">→</span> Reverse-engineered CMS HCC V28 risk models &amp; SSIS packages</li>
-                    </ul>
-                </div>
-                
-                <!-- Job 2 -->
-                <div class="relative">
-                    <div class="absolute -left-[11px] w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 shadow-[0_0_20px_#22d3ee]"></div>
-                    <div class="flex justify-between mb-4">
-                        <div>
-                            <div class="text-cyan-400 font-mono">Oct 2023 – Jun 2024</div>
-                            <h3 class="text-3xl font-semibold">Senior Software Engineer @ EUCLID INNOVATIONS</h3>
-                            <div class="text-purple-400">Client: Société Générale</div>
-                        </div>
-                    </div>
-                    <ul class="space-y-4 text-slate-400 text-lg">
-                        <li class="flex gap-3"><span class="text-cyan-400 mt-1">→</span> 30-node Hadoop cluster (HDFS, Hive, Sqoop)</li>
-                        <li class="flex gap-3"><span class="text-cyan-400 mt-1">→</span> Azure Blob → Databricks + ADLS pipelines</li>
-                    </ul>
-                </div>
-                
-                <!-- Job 3 & 4 same pattern (shortened for space) -->
-                <div class="relative">
-                    <div class="absolute -left-[11px] w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 shadow-[0_0_20px_#22d3ee]"></div>
-                    <div class="flex justify-between mb-4">
-                        <div>
-                            <div class="text-cyan-400 font-mono">Nov 2021 – Mar 2023</div>
-                            <h3 class="text-3xl font-semibold">Software Engineer @ COGNIZANT</h3>
-                            <div class="text-purple-400">Client: Dunkin Donuts</div>
-                        </div>
+                    <div class="md:col-span-8 text-slate-300 space-y-5">
+                        <ul class="list-none space-y-5">
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> Designed & developed scalable ETL pipelines in Databricks (Spark + PySpark) for TB-scale healthcare data (structured, semi-structured, unstructured) with full PHI compliance.</li>
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> Built modular Data Quality Validation framework using Great Expectations + Databricks Labs DQX + Delta-driven rules engine.</li>
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> Implemented environment-aware deployments (dev/stg/qa/prod) with Git + CI/CD.</li>
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> Integrated AWS (S3, Glue, Lambda, CloudWatch) + Airflow for orchestration.</li>
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> Reverse-engineered CMS HCC V28 risk models and legacy SSIS packages into PySpark.</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="relative">
-                    <div class="absolute -left-[11px] w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 shadow-[0_0_20px_#22d3ee]"></div>
-                    <div class="flex justify-between mb-4">
-                        <div>
-                            <div class="text-cyan-400 font-mono">Jan 2020 – Oct 2021</div>
-                            <h3 class="text-3xl font-semibold">Software Engineer @ ACERT IT SOLUTIONS</h3>
-                            <div class="text-purple-400">Client: Medtronic</div>
+
+                <!-- Euclid -->
+                <div class="grid md:grid-cols-12 gap-12">
+                    <div class="md:col-span-4">
+                        <div class="sticky top-8">
+                            <span class="text-cyan-400 font-mono">Oct 2023 – Jun 2024</span>
+                            <h3 class="text-3xl font-semibold mt-3">Senior Software Engineer</h3>
+                            <p class="text-slate-400">EUCLID INNOVATIONS • Client: Société Générale</p>
                         </div>
+                    </div>
+                    <div class="md:col-span-8 text-slate-300 space-y-5">
+                        <ul class="list-none space-y-5">
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> 30-node Hadoop cluster (HDFS, Hive, Sqoop) for large-scale ETL and analytics.</li>
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> Azure Blob → Databricks + ADLS ingestion pipelines using Spark.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Cognizant -->
+                <div class="grid md:grid-cols-12 gap-12">
+                    <div class="md:col-span-4">
+                        <div class="sticky top-8">
+                            <span class="text-cyan-400 font-mono">Nov 2021 – Mar 2023</span>
+                            <h3 class="text-3xl font-semibold mt-3">Software Engineer</h3>
+                            <p class="text-slate-400">COGNIZANT • Client: Dunkin Donuts</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-8 text-slate-300 space-y-5">
+                        <ul class="list-none space-y-5">
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> Spark DataFrame + Spark SQL for complex transformations in Azure Databricks.</li>
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> Built & scheduled PySpark notebooks for customer data processing.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Acert -->
+                <div class="grid md:grid-cols-12 gap-12">
+                    <div class="md:col-span-4">
+                        <div class="sticky top-8">
+                            <span class="text-cyan-400 font-mono">Jan 2020 – Oct 2021</span>
+                            <h3 class="text-3xl font-semibold mt-3">Software Engineer</h3>
+                            <p class="text-slate-400">ACERT IT SOLUTIONS • Client: Medtronic</p>
+                        </div>
+                    </div>
+                    <div class="md:col-span-8 text-slate-300 space-y-5">
+                        <ul class="list-none space-y-5">
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> AWS (S3, Glue, Lambda, CloudWatch) + Databricks pipelines.</li>
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> End-to-end orchestration with Apache Airflow.</li>
+                            <li class="flex gap-4"><span class="text-cyan-400 text-xl">→</span> CI/CD with Git + Jenkins.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -255,169 +218,133 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="py-28 bg-slate-900">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="section-header title-font text-6xl font-bold tracking-tight mb-16 text-center">Skills &amp; Arsenal</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="glass p-8 rounded-3xl card-glow text-center">
-                    <i class="fa-solid fa-cloud text-5xl mb-4 text-cyan-400"></i>
-                    <div class="font-bold text-xl">Azure + AWS</div>
-                    <div class="text-sm text-slate-400 mt-2">Databricks • ADF • S3 • Glue • Lambda • Airflow</div>
+    <section id="skills" class="py-24 bg-slate-900">
+        <div class="max-w-6xl mx-auto px-8">
+            <h2 class="title-font text-6xl font-bold tracking-tight mb-12 text-center">Skills & Technologies</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="glass p-8 rounded-3xl card text-center">
+                    <i class="fa-solid fa-cloud text-6xl text-cyan-400 mb-4"></i>
+                    <div class="font-semibold text-2xl">Cloud &amp; Data Platforms</div>
+                    <div class="text-sm mt-3 text-slate-400">Azure Databricks • Azure Data Factory • ADLS • Blob • AWS S3 • Glue • Lambda • Airflow</div>
                 </div>
-                <div class="glass p-8 rounded-3xl card-glow text-center">
-                    <i class="fa-solid fa-fire text-5xl mb-4 text-orange-400"></i>
-                    <div class="font-bold text-xl">Big Data Stack</div>
-                    <div class="text-sm text-slate-400 mt-2">PySpark • Spark SQL • Delta Lake • Hive • Sqoop</div>
+                <div class="glass p-8 rounded-3xl card text-center">
+                    <i class="fa-solid fa-database text-6xl text-emerald-400 mb-4"></i>
+                    <div class="font-semibold text-2xl">Big Data &amp; Processing</div>
+                    <div class="text-sm mt-3 text-slate-400">PySpark • Spark SQL • Hadoop • Hive • Sqoop • Delta Lake</div>
                 </div>
-                <div class="glass p-8 rounded-3xl card-glow text-center">
-                    <i class="fa-solid fa-shield-halved text-5xl mb-4 text-emerald-400"></i>
-                    <div class="font-bold text-xl">Data Quality</div>
-                    <div class="text-sm text-slate-400 mt-2">Great Expectations • Databricks DQX • CMS HCC V28</div>
+                <div class="glass p-8 rounded-3xl card text-center">
+                    <i class="fa-solid fa-shield-halved text-6xl text-purple-400 mb-4"></i>
+                    <div class="font-semibold text-2xl">Data Quality &amp; Domain</div>
+                    <div class="text-sm mt-3 text-slate-400">Great Expectations • Databricks DQX • CMS HCC V28 • Healthcare PHI • SSIS Migration</div>
                 </div>
-                <div class="glass p-8 rounded-3xl card-glow text-center">
-                    <i class="fa-solid fa-code text-5xl mb-4 text-purple-400"></i>
-                    <div class="font-bold text-xl">DevOps</div>
-                    <div class="text-sm text-slate-400 mt-2">Git • CI/CD • Jenkins • Shell • Jira</div>
+                <div class="glass p-8 rounded-3xl card text-center">
+                    <i class="fa-solid fa-code-branch text-6xl text-orange-400 mb-4"></i>
+                    <div class="font-semibold text-2xl">DevOps &amp; Tools</div>
+                    <div class="text-sm mt-3 text-slate-400">Git • CI/CD • Jenkins • Jira • Shell Scripting • Linux</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CERTIFICATIONS -->
-    <section id="certifications" class="py-28 bg-slate-950">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="section-header title-font text-6xl font-bold tracking-tight mb-16">Certifications</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- All 6 certs as glowing clickable cards -->
-                <a href="https://learn.microsoft.com/api/credentials/share/en-us/NikileshwaraTK-3810/14E3872DF019FB4F&sharingId" target="_blank" class="glass p-8 rounded-3xl card-glow flex items-center gap-6 group">
-                    <div class="text-6xl">🏆</div>
+    <section id="certifications" class="py-24 bg-slate-950">
+        <div class="max-w-5xl mx-auto px-8">
+            <h2 class="title-font text-6xl font-bold tracking-tight mb-12 text-center">Certifications</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <a href="https://learn.microsoft.com/api/credentials/share/en-us/NikileshwaraTK-3810/14E3872DF019FB4F&sharingId" target="_blank" class="glass p-8 rounded-3xl card flex gap-6 hover:border-cyan-400">
+                    <span class="text-6xl">🏆</span>
                     <div>
-                        <div class="font-semibold text-2xl group-hover:text-cyan-300">Azure Data Engineer Associate (DP-203)</div>
-                        <div class="text-slate-400">Microsoft</div>
+                        <div class="font-semibold text-2xl">Microsoft Certified: Azure Data Engineer Associate (DP-203)</div>
+                        <div class="text-cyan-400 mt-1">Microsoft</div>
                     </div>
                 </a>
-                <!-- Repeat for AWS, Microsoft Fabric, Intro to AI, HL7 Standards, HL7 FHIR -->
-                <!-- (I kept them all with links) -->
+                <a href="https://www.credly.com/badges/9c54484e-5f96-4d29-b649-4e685e93c376/public_url" target="_blank" class="glass p-8 rounded-3xl card flex gap-6 hover:border-cyan-400">
+                    <span class="text-6xl">🏆</span>
+                    <div>
+                        <div class="font-semibold text-2xl">AWS Certified Data Engineer – Associate</div>
+                        <div class="text-cyan-400 mt-1">AWS</div>
+                    </div>
+                </a>
+                <!-- All other 4 Udemy certs added the same way with their links -->
+                <a href="http://ude.my/UC-d7623911-5a17-4b4a-9ddb-3d9b32e5aead" target="_blank" class="glass p-8 rounded-3xl card flex gap-6 hover:border-cyan-400">
+                    <span class="text-6xl">🏆</span>
+                    <div>
+                        <div class="font-semibold text-2xl">Microsoft Fabric – The Complete Guide</div>
+                        <div class="text-cyan-400 mt-1">Udemy</div>
+                    </div>
+                </a>
+                <a href="http://ude.my/UC-f231a698-9386-48ec-a096-44422863e49e" target="_blank" class="glass p-8 rounded-3xl card flex gap-6 hover:border-cyan-400">
+                    <span class="text-6xl">🏆</span>
+                    <div>
+                        <div class="font-semibold text-2xl">Intro to AI: A Beginner's Guide</div>
+                        <div class="text-cyan-400 mt-1">Udemy</div>
+                    </div>
+                </a>
+                <a href="http://ude.my/UC-7cdd13ac-1a5d-4d14-977f-5808da0634ab" target="_blank" class="glass p-8 rounded-3xl card flex gap-6 hover:border-cyan-400">
+                    <span class="text-6xl">🏆</span>
+                    <div>
+                        <div class="font-semibold text-2xl">Beginners Guide to HL7 Standards &amp; Health Interoperability</div>
+                        <div class="text-cyan-400 mt-1">Udemy</div>
+                    </div>
+                </a>
+                <a href="http://ude.my/UC-c23bb5a7-5709-41d0-adcd-9ce43e7a613a" target="_blank" class="glass p-8 rounded-3xl card flex gap-6 hover:border-cyan-400">
+                    <span class="text-6xl">🏆</span>
+                    <div>
+                        <div class="font-semibold text-2xl">HL7 FHIR Mastery: A Course for Newbies and Pros</div>
+                        <div class="text-cyan-400 mt-1">Udemy</div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-28 bg-gradient-to-b from-slate-900 to-black">
-        <div class="max-w-4xl mx-auto px-6">
+    <section id="contact" class="py-24 bg-slate-900">
+        <div class="max-w-4xl mx-auto px-8">
             <div class="glass rounded-3xl p-12">
-                <h2 class="title-font text-6xl font-bold text-center mb-12">Let's Make Data Magic</h2>
-                
+                <h2 class="title-font text-5xl font-bold text-center mb-10">Let's Build Something Great</h2>
                 <form id="contact-form" class="space-y-8">
-                    <input type="text" id="name" placeholder="Your Name" required class="w-full bg-slate-800 border border-cyan-500/30 focus:border-cyan-400 rounded-3xl px-8 py-6 outline-none">
-                    <input type="email" id="email" placeholder="your@email.com" required class="w-full bg-slate-800 border border-cyan-500/30 focus:border-cyan-400 rounded-3xl px-8 py-6 outline-none">
-                    <textarea id="message" rows="6" placeholder="Your message..." required class="w-full bg-slate-800 border border-cyan-500/30 focus:border-cyan-400 rounded-3xl px-8 py-6 outline-none"></textarea>
+                    <input type="text" id="name" placeholder="Your Name" class="w-full bg-slate-800 border border-slate-700 focus:border-cyan-400 rounded-2xl px-8 py-6 outline-none" required>
+                    <input type="email" id="email" placeholder="your@email.com" class="w-full bg-slate-800 border border-slate-700 focus:border-cyan-400 rounded-2xl px-8 py-6 outline-none" required>
+                    <textarea id="message" rows="6" placeholder="Tell me about your project..." class="w-full bg-slate-800 border border-slate-700 focus:border-cyan-400 rounded-3xl px-8 py-6 outline-none" required></textarea>
                     
-                    <button type="submit" 
-                            class="w-full py-7 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-3xl font-bold text-xl hover:scale-105 transition-all shadow-[0_0_40px_#22d3ee]">
-                        SEND MESSAGE
-                    </button>
+                    <button type="submit" class="w-full py-6 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xl rounded-2xl transition-all">SEND MESSAGE</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-black py-12 text-center text-slate-500">
-        © 2026 Nikileshwara T K • Built with neon &amp; data
+    <footer class="bg-black py-12 text-center text-slate-500 text-sm">
+        © 2026 Nikileshwara T K • Bengaluru, India
     </footer>
 
     <script>
-        // EmailJS (your exact keys from dashboard)
-        emailjs.init("uegha6Lk7IH4RrdjL");
+        // === EMAILJS SETUP ===
+        emailjs.init("uegha6Lk7IH4RrdjL");   // ← Your Public Key (already correct)
         
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = this.querySelector('button');
-            btn.innerHTML = 'SENDING...';
+            btn.textContent = 'SENDING...';
             
-            emailjs.send("YOUR_SERVICE_ID", "template_wy416lu", {
+            emailjs.send("YOUR_SERVICE_ID_HERE", "template_wy416lu", {
                 from_name: document.getElementById('name').value,
                 from_email: document.getElementById('email').value,
                 message: document.getElementById('message').value
             }).then(() => {
-                alert("Message sent! I'll reply soon 🔥");
+                alert("✅ Message sent! I'll reply soon.");
                 this.reset();
-                btn.innerHTML = 'SENT SUCCESSFULLY!';
-                setTimeout(() => btn.innerHTML = 'SEND MESSAGE', 3000);
+                btn.textContent = 'SEND MESSAGE';
+            }).catch(() => {
+                alert("❌ Something went wrong. Email me directly at tknikileshwara@gmail.com");
+                btn.textContent = 'SEND MESSAGE';
             });
         });
         
-        // TYPING EFFECT
-        const text = "SENIOR DATA ENGINEER";
-        let i = 0;
-        const typingEl = document.createElement('span');
-        typingEl.className = "text-cyan-300";
-        document.querySelector('h2').appendChild(typingEl);
+        // Replace "YOUR_SERVICE_ID_HERE" with your actual EmailJS Service ID from the dashboard
         
-        function type() {
-            if (i < text.length) {
-                typingEl.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, 80);
-            }
-        }
-        setTimeout(type, 800);
-        
-        // PARTICLE BACKGROUND (super cool floating data dots)
-        const canvas = document.getElementById('particles');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const ctx = canvas.getContext('2d');
-        
-        let particles = [];
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height + 50;
-                this.size = Math.random() * 4 + 1;
-                this.speed = Math.random() * 1.5 + 0.5;
-            }
-            update() {
-                this.y -= this.speed;
-                if (this.y < -10) this.y = canvas.height + 50;
-            }
-            draw() {
-                ctx.fillStyle = '#22d3ee';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-        
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < 80; i++) {
-                particles.push(new Particle());
-            }
-        }
-        
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animateParticles);
-        }
-        
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initParticles();
-        });
-        
-        initParticles();
-        animateParticles();
-        
-        console.log('%c🚀 Neon Portfolio Loaded – Hope this feels exciting!', 'color:#22d3ee; font-size:18px; font-weight:bold');
+        console.log('%c✅ Portfolio v3 loaded – much cleaner & professional now!', 'color:#67e8f9; font-size:16px');
     </script>
 </body>
 </html>
