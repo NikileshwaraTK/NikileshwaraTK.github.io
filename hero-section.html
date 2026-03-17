@@ -9,34 +9,6 @@
     <div class="data-orb top-[70%] right-[15%]" style="animation-delay: 2s;"></div>
   </div>
 
-  <!-- PLAYFUL VISITOR MODAL (triggers on first visit) -->
-  <div id="entryModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50">
-    <div class="modal bg-white text-slate-800 rounded-3xl p-10 max-w-md w-full mx-4 shadow-2xl">
-      <div class="text-center">
-        <div class="text-6xl mb-6">🌌</div>
-        <h2 class="title-font text-4xl font-semibold mb-3">Hey there! 👋</h2>
-        <p class="text-xl text-slate-600 mb-8">Welcome to my data universe.<br>Quick intro before exploring my 5-year journey?</p>
-        
-        <input id="visitorName" type="text" placeholder="Your name" class="w-full px-6 py-4 rounded-2xl border border-slate-300 focus:border-sky-500 mb-4">
-        
-        <select id="visitorPurpose" class="w-full px-6 py-4 rounded-2xl border border-slate-300 focus:border-sky-500 mb-6">
-          <option value="">Why are you visiting?</option>
-          <option value="Looking to hire a Senior Data Engineer">🔥 Looking to hire a Senior Data Engineer</option>
-          <option value="Recruiter checking profiles">👔 Recruiter checking profiles</option>
-          <option value="Fellow data professional / networking">🤝 Fellow data professional / networking</option>
-          <option value="Potential client or collaborator">💼 Potential client or collaborator</option>
-          <option value="Casual browsing / inspiration">📖 Casual browsing / inspiration</option>
-          <option value="Other">Other</option>
-        </select>
-        
-        <div class="flex gap-4">
-          <button onclick="skipModal()" class="flex-1 py-4 border-2 border-slate-300 rounded-2xl font-medium hover:bg-slate-100">Skip</button>
-          <button onclick="submitVisitor()" class="flex-1 py-4 bg-gradient-to-r from-sky-500 to-teal-500 text-white rounded-2xl font-semibold">Continue →</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
     
     <!-- Open to opportunities -->
@@ -92,6 +64,4 @@
     0% { transform: translate(0, 0) rotate(0deg); }
     100% { transform: translate(1100px, -180px) rotate(360deg); }
   }
-  .modal { animation: modalPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); }
-  @keyframes modalPop { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 </style>
