@@ -11,6 +11,7 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; }
     .data-flow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, #0f172a, #1e2937); overflow: hidden; z-index: -1; }
     .particle { position: absolute; width: 4px; height: 4px; background: #22d3ee; border-radius: 50%; animation: flow 8s linear infinite; opacity: 0.6; }
@@ -85,62 +86,67 @@
     <section id="about" class="py-24 bg-slate-900">
       <div class="max-w-4xl mx-auto px-6">
         <h2 class="text-4xl font-bold mb-8 text-cyan-400" data-aos="fade-up">About Me</h2>
-        <p class="text-lg text-slate-300 leading-relaxed">I am passionate about collecting, processing, and storing data. Designing, testing, and maintaining data management systems and processes, and analyzing databases. The ultimate goal is to make data accessible so that organizations can use it to evaluate and optimize performance.</p>
+        <p class="text-lg text-slate-300 leading-relaxed" data-aos="fade-up">I am passionate about collecting, processing, and storing data. Designing, testing, and maintaining data management systems and processes, and analyzing databases. The ultimate goal is to make data accessible so that organizations can use it to evaluate and optimize performance.</p>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
+    <!-- EXPERIENCE (FULL DETAIL) -->
     <section id="experience" class="py-24">
       <div class="max-w-5xl mx-auto px-6">
         <h2 class="text-4xl font-bold mb-12 text-cyan-400" data-aos="fade-up">Experience</h2>
         <div class="space-y-16">
 
+          <!-- Humana -->
           <div class="flex gap-8" data-aos="fade-up">
             <div class="w-32 text-right text-cyan-400 font-medium">Jul 2024 – Present</div>
             <div class="flex-1">
               <div class="flex items-center gap-4"><div class="timeline-dot rounded-full"></div><h3 class="text-2xl font-semibold">Senior Consultant – Data Modernization</h3></div>
               <p class="text-cyan-400">Emids Technologies | Client: Humana</p>
               <ul class="mt-6 pl-10 space-y-3 text-slate-300">
-                <li>Designed & built TB-scale ETL pipelines in Databricks using Spark & PySpark for healthcare data (PHI compliant)</li>
-                <li>Built modular Data Quality Validation framework using Great Expectations + Databricks Labs DQX + Delta-driven rules</li>
-                <li>Integrated AWS (S3, Glue, Lambda, CloudWatch) + Airflow orchestration</li>
-                <li>Reverse-engineered CMS HCC V28 risk models & legacy SSIS packages</li>
+                <li>Designed and developed scalable ETL pipelines in Databricks using Spark and PySpark to process TB-scale healthcare data (structured, semi-structured, unstructured) with PHI compliance.</li>
+                <li>Built modular Data Quality Validation framework using Great Expectations and Databricks Labs DQX, enhanced with Delta-driven rules engine.</li>
+                <li>Implemented environment-aware CI/CD deployments (dev/stg/qa/prod) with Git and parameterized configs.</li>
+                <li>Integrated AWS (S3, Glue, Lambda, CloudWatch) + Airflow orchestration.</li>
+                <li>Reverse-engineered CMS HCC V28 risk models and legacy SSIS packages into PySpark.</li>
               </ul>
             </div>
           </div>
 
+          <!-- Euclid -->
           <div class="flex gap-8" data-aos="fade-up">
             <div class="w-32 text-right text-cyan-400 font-medium">Oct 2023 – Jun 2024</div>
             <div class="flex-1">
               <div class="flex items-center gap-4"><div class="timeline-dot rounded-full"></div><h3 class="text-2xl font-semibold">Senior Software Engineer – Data Integration</h3></div>
               <p class="text-cyan-400">Euclid Innovations | Client: Société Générale</p>
               <ul class="mt-6 pl-10 space-y-3 text-slate-300">
-                <li>Worked on 30-node Hadoop cluster (HDFS, Hive, Sqoop)</li>
-                <li>Built ETL pipelines from Azure Blob to Databricks + ADLS using Spark</li>
+                <li>Worked on 30-node Hadoop cluster (HDFS, Hive, Sqoop) for large-scale storage and analytics.</li>
+                <li>Developed ETL pipelines from Azure Blob Storage to Azure Databricks and ADLS using Spark.</li>
               </ul>
             </div>
           </div>
 
+          <!-- Cognizant -->
           <div class="flex gap-8" data-aos="fade-up">
             <div class="w-32 text-right text-cyan-400 font-medium">Nov 2021 – Mar 2023</div>
             <div class="flex-1">
               <div class="flex items-center gap-4"><div class="timeline-dot rounded-full"></div><h3 class="text-2xl font-semibold">Software Engineer – Data Analysis</h3></div>
               <p class="text-cyan-400">Cognizant | Client: Dunkin Donuts</p>
               <ul class="mt-6 pl-10 space-y-3 text-slate-300">
-                <li>Used Spark DataFrame & Spark-SQL in Azure Databricks for complex transformations</li>
-                <li>Automated notebook scheduling for customer data processing</li>
+                <li>Used Spark DataFrame API and Spark-SQL for complex transformations in Azure Databricks.</li>
+                <li>Built business logic and automated notebook scheduling for customer data processing.</li>
               </ul>
             </div>
           </div>
 
+          <!-- Acert -->
           <div class="flex gap-8" data-aos="fade-up">
             <div class="w-32 text-right text-cyan-400 font-medium">Jan 2020 – Oct 2021</div>
             <div class="flex-1">
               <div class="flex items-center gap-4"><div class="timeline-dot rounded-full"></div><h3 class="text-2xl font-semibold">Software Engineer – Data Processing</h3></div>
               <p class="text-cyan-400">Acert IT Solutions | Client: Medtronic</p>
               <ul class="mt-6 pl-10 space-y-3 text-slate-300">
-                <li>Integrated AWS (S3, Glue, Lambda) + Databricks pipelines</li>
-                <li>End-to-end Airflow orchestration with Git & Jenkins CI/CD</li>
+                <li>Integrated AWS services (S3, Glue, Lambda, CloudWatch) with Databricks pipelines.</li>
+                <li>Orchestrated end-to-end workflows using Apache Airflow and Git/Jenkins CI/CD.</li>
               </ul>
             </div>
           </div>
@@ -153,15 +159,15 @@
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-4xl font-bold mb-12 text-cyan-400" data-aos="fade-up">Featured Projects</h2>
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-slate-800 p-8 rounded-3xl border border-cyan-400 hover:border-cyan-300" data-aos="fade-up">
+          <div class="bg-slate-800 p-8 rounded-3xl border border-cyan-400" data-aos="fade-up">
             <h3 class="text-2xl font-semibold">Custom Data Quality Framework</h3>
-            <p class="text-cyan-400 mt-2">Humana • Great Expectations + Databricks DQX</p>
-            <p class="mt-4 text-slate-300">Built dynamic validation engine (null checks, regex, ranges, uniqueness, row counts) for every TB-scale job.</p>
+            <p class="text-cyan-400">Humana • Great Expectations + Databricks DQX + Delta</p>
+            <p class="mt-4 text-slate-300">Built dynamic validation engine enforcing null checks, regex, ranges, uniqueness, and row counts on every TB-scale job.</p>
           </div>
-          <div class="bg-slate-800 p-8 rounded-3xl border border-cyan-400 hover:border-cyan-300" data-aos="fade-up">
+          <div class="bg-slate-800 p-8 rounded-3xl border border-cyan-400" data-aos="fade-up">
             <h3 class="text-2xl font-semibold">TB-scale Healthcare ETL Modernization</h3>
-            <p class="text-cyan-400 mt-2">Humana • Spark + Airflow + AWS</p>
-            <p class="mt-4 text-slate-300">Migrated legacy SSIS packages to Databricks for CMS HCC V28 risk adjustment models.</p>
+            <p class="text-cyan-400">Humana • Spark + Airflow + AWS</p>
+            <p class="mt-4 text-slate-300">Modernized legacy SSIS packages into production-ready PySpark pipelines for CMS HCC V28 risk adjustment models.</p>
           </div>
         </div>
       </div>
@@ -172,10 +178,10 @@
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-4xl font-bold mb-12 text-cyan-400 text-center" data-aos="fade-up">Skills</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="bg-slate-800 p-6 rounded-3xl text-center" data-aos="zoom-in">Azure Databricks<br><span class="text-cyan-400 text-sm">PySpark • Spark SQL • Delta Lake</span></div>
-          <div class="bg-slate-800 p-6 rounded-3xl text-center" data-aos="zoom-in">Data Quality<br><span class="text-cyan-400 text-sm">Great Expectations • DQX</span></div>
-          <div class="bg-slate-800 p-6 rounded-3xl text-center" data-aos="zoom-in">Orchestration<br><span class="text-cyan-400 text-sm">Airflow • Azure Data Factory</span></div>
-          <div class="bg-slate-800 p-6 rounded-3xl text-center" data-aos="zoom-in">Multi-Cloud<br><span class="text-cyan-400 text-sm">AWS (S3, Glue, Lambda) • Hadoop</span></div>
+          <div class="bg-slate-800 p-8 rounded-3xl text-center" data-aos="zoom-in">Azure Databricks<br><span class="text-cyan-400 text-sm">PySpark • Spark SQL • Delta Lake</span></div>
+          <div class="bg-slate-800 p-8 rounded-3xl text-center" data-aos="zoom-in">Data Quality<br><span class="text-cyan-400 text-sm">Great Expectations • DQX</span></div>
+          <div class="bg-slate-800 p-8 rounded-3xl text-center" data-aos="zoom-in">Orchestration<br><span class="text-cyan-400 text-sm">Airflow • Azure Data Factory</span></div>
+          <div class="bg-slate-800 p-8 rounded-3xl text-center" data-aos="zoom-in">Multi-Cloud & Big Data<br><span class="text-cyan-400 text-sm">AWS (S3/Glue/Lambda) • Hadoop • Hive • Sqoop</span></div>
         </div>
       </div>
     </section>
@@ -185,10 +191,10 @@
       <div class="max-w-5xl mx-auto px-6">
         <h2 class="text-4xl font-bold mb-12 text-cyan-400" data-aos="fade-up">Certifications</h2>
         <div class="grid md:grid-cols-2 gap-8">
-          <a href="https://learn.microsoft.com/api/credentials/share/en-us/NikileshwaraTK-3810/14E3872DF019FB4F&sharingId" target="_blank" class="block bg-slate-800 p-8 rounded-3xl hover:bg-slate-700 transition" data-aos="fade-up">
+          <a href="https://learn.microsoft.com/api/credentials/share/en-us/NikileshwaraTK-3810/14E3872DF019FB4F&sharingId" target="_blank" class="block bg-slate-800 p-8 rounded-3xl hover:bg-slate-700" data-aos="fade-up">
             <h3 class="font-semibold text-xl">Microsoft Certified: Azure Data Engineer Associate (DP-203)</h3>
           </a>
-          <a href="https://www.credly.com/badges/9c54484e-5f96-4d29-b649-4e685e93c376/public_url" target="_blank" class="block bg-slate-800 p-8 rounded-3xl hover:bg-slate-700 transition" data-aos="fade-up">
+          <a href="https://www.credly.com/badges/9c54484e-5f96-4d29-b649-4e685e93c376/public_url" target="_blank" class="block bg-slate-800 p-8 rounded-3xl hover:bg-slate-700" data-aos="fade-up">
             <h3 class="font-semibold text-xl">AWS Certified Data Engineer - Associate</h3>
           </a>
         </div>
@@ -198,7 +204,7 @@
     <!-- CONTACT -->
     <section id="contact" class="py-24">
       <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold mb-8 text-cyan-400">Get In Touch</h2>
+        <h2 class="text-4xl font-bold mb-8 text-cyan-400" data-aos="fade-up">Get In Touch</h2>
         <p class="text-xl text-slate-300">Phone: (+91) 7899556939<br>Email: tknikileshwara@gmail.com<br>LinkedIn: linkedin.com/in/nikileshwaraa-t-k-050312295</p>
       </div>
     </section>
